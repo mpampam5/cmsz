@@ -99,7 +99,7 @@
                 {y: '2014', a: 105, b: 100, c: 80},
                 {y: '2015', a: 250, b: 150, c: 200}
             ];
-            this.createLineChart('morris-line-example', $data, 'y', ['a', 'b', 'c'], ['Activated', 'Pending', 'Deactivated'], ['#ccc', '#f15a69', '#4bbbce']);
+            this.createLineChart('morris-line-example', $data, 'y', ['a', 'b', 'c'], ['Activated', 'Pending', 'Deactivated'], ['#ccc', '#2f8ee0', '#4bbbce']);
 
             //creating bar chart
             var $barData = [
@@ -112,7 +112,7 @@
                 {y: '2015', a: 100, b: 90},
                 {y: '2016', a: 90, b: 75}
             ];
-            this.createBarChart('morris-bar-example', $barData, 'y', ['a', 'b'], ['Series A', 'Series B'], ['#f15a69','#4bbbce']);
+            this.createBarChart('morris-bar-example', $barData, 'y', ['a', 'b'], ['Series A', 'Series B'], ['#2f8ee0','#4bbbce']);
 
             //creating area chart
             var $areaData = [
@@ -124,7 +124,7 @@
                 {y: '2012', a: 75, b: 240, c:120},
                 {y: '2013', a: 30, b: 30, c:30}
             ];
-            this.createAreaChart('morris-area-example', 0, 0, $areaData, 'y', ['a', 'b', 'c'], ['Series A', 'Series B', 'Series C'], ['#ccc', '#f15a69', '#4bbbce']);
+            this.createAreaChart('morris-area-example', 0, 0, $areaData, 'y', ['a', 'b', 'c'], ['Series A', 'Series B', 'Series C'], ['#ccc', '#2f8ee0', '#4bbbce']);
 
             //creating donut chart
             var $donutData = [
@@ -132,7 +132,7 @@
                 {label: "In-Store Sales", value: 30},
                 {label: "Mail-Order Sales", value: 20}
             ];
-            this.createDonutChart('morris-donut-example', $donutData, ['#f0f1f4', '#f15a69', '#4bbbce']);
+            this.createDonutChart('morris-donut-example', $donutData, ['#f0f1f4', '#2f8ee0', '#4bbbce']);
 
             //creating Stacked chart
             var $stckedData = [
@@ -149,7 +149,7 @@
                 {y: '2015', a: 100, b: 90},
                 {y: '2016', a: 80, b: 65}
             ];
-            this.createStackedChart('morris-bar-stacked', $stckedData, 'y', ['a', 'b'], ['Series A', 'Series B'], ['#f15a69', '#f0f1f4']);
+            this.createStackedChart('morris-bar-stacked', $stckedData, 'y', ['a', 'b'], ['Series A', 'Series B'], ['#2f8ee0', '#f0f1f4']);
 
         },
         //init

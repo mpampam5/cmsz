@@ -19,6 +19,7 @@
         <link href="<?=base_url()?>_template/backend/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="<?=base_url()?>_template/backend/css/icons.css" rel="stylesheet" type="text/css" />
         <link href="<?=base_url()?>_template/backend/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="<?=base_url()?>_template/backend/css/custom.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<?=base_url()?>_template/backend/plugins/jquery-toast-plugin/jquery.toast.min.css">
 
 

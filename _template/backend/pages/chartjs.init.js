@@ -58,17 +58,17 @@
                     label: "Sales Analytics",
                     fill: true,
                     lineTension: 0.5,
-                    backgroundColor: "rgba(241, 90, 105, 0.2)",
-                    borderColor: "#f15a69",
+                    backgroundColor: "rgba(51, 141, 221, 0.2)",
+                    borderColor: "#2f8ee0",
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
-                    pointBorderColor: "#f15a69",
+                    pointBorderColor: "#2f8ee0",
                     pointBackgroundColor: "#fff",
                     pointBorderWidth: 1,
                     pointHoverRadius: 5,
-                    pointHoverBackgroundColor: "#f15a69",
+                    pointHoverBackgroundColor: "#2f8ee0",
                     pointHoverBorderColor: "#eef0f2",
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
@@ -123,11 +123,11 @@
                 {
                     data: [300, 210],
                     backgroundColor: [
-                        "#861431",
+                        "#6fd08b",
                         "#ebeff2"
                     ],
                     hoverBackgroundColor: [
-                        "#861431",
+                        "#6fd08b",
                         "#ebeff2"
                     ],
                     hoverBorderColor: "#fff"

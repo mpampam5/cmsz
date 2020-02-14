@@ -265,7 +265,7 @@
           var laptops = [[0, 80], [1, 100], [2,60], [3, 120], [4, 140], [5, 100], [6, 105]];
           var tablets = [[0, 20], [1, 80], [2, 70], [3, 140], [4, 250], [5, 80], [6, 200]];
           var plabels = ["Desktops","Laptops","Tablets"];
-          var pcolors = ['#f0f1f4', '#f15a69', '#4bbbce'];
+          var pcolors = ['#f0f1f4', '#2f8ee0', '#4bbbce'];
           var borderColor = '#f5f5f5';
           var bgColor = '#fff';
           this.createPlotGraph("#website-stats", desktops, laptops, tablets, plabels, pcolors, borderColor, bgColor);
@@ -273,12 +273,12 @@
           //Pie graph data
           var pielabels = ["Desktops","Laptops","Tablets"];
           var datas = [20,30, 15];
-          var colors = ['#f15a69','#4bbbce', "#ebeff2"];
+          var colors = ['#2f8ee0','#4bbbce', "#ebeff2"];
           this.createPieGraph("#pie-chart #pie-chart-container", pielabels , datas, colors);
 
 
             //real time data representation
-            var plot = this.createRealTimeGraph('#flotRealTime', this.randomData() , ['#f15a69']);
+            var plot = this.createRealTimeGraph('#flotRealTime', this.randomData() , ['#4bbbce']);
             plot.draw();
             var $this = this;
             function updatePlot() {
@@ -292,7 +292,7 @@
             //Donut pie graph data
           var donutlabels = ["Desktops","Laptops","Tablets"];
           var donutdatas = [29,20, 18];
-          var donutcolors = ['#f0f1f4', '#f15a69', '#4bbbce'];
+          var donutcolors = ['#f0f1f4', '#2f8ee0', '#4bbbce'];
           this.createDonutGraph("#donut-chart #donut-chart-container", donutlabels , donutdatas, donutcolors);
         },
 

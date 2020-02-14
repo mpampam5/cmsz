@@ -45,12 +45,12 @@
 }
 
 .alert-danger {
-  color: $primary;
-  background-color: lighten($primary,30%);
+  color: $danger;
+  background-color: lighten($danger,40%);
   .alert-link {
-    color: darken($primary,10%);
+    color: darken($danger,10%);
   }
   hr {
-    border-top-color: darken($primary,10%);
+    border-top-color: darken($danger,10%);
   }
 }

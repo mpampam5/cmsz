@@ -70,6 +70,17 @@
 
                     <table class="table table-bordered">
                       <tr>
+                        <td>Status SMTP [Aktif/Tidak]
+                            <p style="font-size:12px;" class="text-primary">
+                              * Semua MODUL yang mengirimkan Email ke client/member akan di Nonaktifkan jika status NO.
+                            </p>
+                        </td>
+                        <td>
+                          <input type="checkbox" id="switch2" class="checkbox1" name="status_smtp" switch="success" <?=config_system("status_smtp","status")=="1" ? "checked":""?>/>
+                          <label for="switch2" data-on-label="Yes" data-off-label="No"></label>
+                        </td>
+                      </tr>
+                      <tr>
                         <td colspan="2">
                           <form id="form_email_smtp" action="<?=site_url("backend/setting/email_smtp_action")?>" autocomplete="off">
                             <div class="form-group row">
@@ -105,13 +116,18 @@
                             </div>
                           </form>
 
+
                         </td>
                       </tr>
 
 
 
                       <tr>
-                        <td>Maintenance System</td>
+                        <td>Maintenance System [Aktif/Tidak]
+                          <p style="font-size:12px;" class="text-primary">
+                          * Halaman Public akan di maintenance jika status YES.
+                          </p>
+                        </td>
                         <td>
                           <input type="checkbox" id="switch1" class="checkbox1" name="maintenance" switch="success" <?=config_system("maintenance","status")=="1" ? "checked":""?>/>
                           <label for="switch1" data-on-label="Yes" data-off-label="No"></label>
@@ -128,12 +144,31 @@
 </div>
 
 <script type="text/javascript">
+$(document).ready(function(){
+    if (<?=config_system("status_smtp","status")?>=="1") {
+      $("#form_email_smtp .form-control, #submit_smtp").prop("disabled",false);
+      $('#form_email_smtp .form-group').find('.text-danger').remove();
+    }else {
+      $("#form_email_smtp .form-control, #submit_smtp").prop("disabled",true);
+      $('#form_email_smtp .form-group').find('.text-danger').remove();
+    }
+})
 
 $("input[type='checkbox']").change(function() {
   if (this.checked) {
     var dataVal = 1;
   }else {
     var dataVal = 0;
+  }
+
+  if ($(this).attr('name')=="status_smtp") {
+    if (this.checked) {
+      $("#form_email_smtp .form-control, #submit_smtp").prop("disabled",false);
+      $('#form_email_smtp .form-group').find('.text-danger').remove();
+    }else {
+      $("#form_email_smtp .form-control, #submit_smtp").prop("disabled",true);
+      $('#form_email_smtp .form-group').find('.text-danger').remove();
+    }
   }
 
   var dataName = $(this).attr('name');

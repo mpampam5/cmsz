@@ -22,7 +22,7 @@
                 type: 'bar',
                 colors: {
                     Desktop: '#f0f1f4',
-                    Mobile: '#f15a69',
+                    Mobile: '#2f8ee0',
                     Tablet: '#4bbbce'
                 }
             }
@@ -48,7 +48,7 @@
                 },
                 colors: {
                     SonyVaio: '#f0f1f4',
-                    iMacs: '#f15a69',
+                    iMacs: '#2f8ee0',
                     Tablets: '#4bbbce',
                     iPhones: '#f1463c',
                     Macbooks: '#6fd08b'
@@ -128,7 +128,7 @@
 				}
             },
             color: {
-            	pattern: ['#f0f1f4', '#f15a69', '#4bbbce', '#8861dd']
+            	pattern: ['#f0f1f4', '#2f8ee0', '#4bbbce', '#8861dd']
             }
         });
         
@@ -145,7 +145,7 @@
                 type : 'pie'
             },
             color: {
-                pattern: ['#f0f1f4', '#f15a69', '#4bbbce', '#8861dd']
+                pattern: ['#f0f1f4', '#2f8ee0', '#4bbbce', '#8861dd']
             },
             pie: {
 		        label: {
