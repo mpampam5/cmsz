@@ -2,7 +2,7 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-12 col-xl-9 mx-auto">
+            <div class="col-md-12 col-xl-9 mx-auto animated fadeInRight delay-2s">
                 <div class="card m-b-30">
                   <div class="card-body">
                     <h4 class="mt-0 header-title">Umum</h4>
@@ -63,7 +63,7 @@
         <!-- end row -->
 
         <div class="row">
-            <div class="col-md-12 col-xl-9 mx-auto">
+            <div class="col-md-12 col-xl-9 mx-auto animated fadeInRight delay-2s">
                 <div class="card m-b-30">
                   <div class="card-body">
                     <h4 class="mt-0 header-title">System</h4>
@@ -72,7 +72,7 @@
                       <tr>
                         <td>Status SMTP [Aktif/Tidak]
                             <p style="font-size:12px;" class="text-primary">
-                              * Semua MODUL yang mengirimkan Email ke client/member akan di Nonaktifkan jika status NO.
+                              * Semua MODUL yang mengirimkan Email Notoifikasi ke client/member akan di Nonaktifkan jika status NO.
                             </p>
                         </td>
                         <td>

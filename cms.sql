@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : root
  Source Server Type    : MySQL
- Source Server Version : 100110
+ Source Server Version : 100134
  Source Host           : localhost:3306
- Source Schema         : cms
+ Source Schema         : cmsz
 
  Target Server Type    : MySQL
- Target Server Version : 100110
+ Target Server Version : 100134
  File Encoding         : 65001
 
- Date: 14/02/2020 02:17:25
+ Date: 16/02/2020 07:26:35
 */
 
 SET NAMES utf8mb4;
@@ -67,15 +67,16 @@ CREATE TABLE `level`  (
   `slug` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `created` datetime(0) NULL DEFAULT NULL,
   `modified` datetime(0) NULL DEFAULT NULL,
+  `is_delete` enum('0','1') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
   PRIMARY KEY (`id_level`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of level
 -- ----------------------------
-INSERT INTO `level` VALUES (1, 'xadmin', 'xadmin', '2020-02-14 00:03:45', NULL);
-INSERT INTO `level` VALUES (2, 'superadmin', 'superadmin', '2020-02-14 00:00:08', '0000-00-00 00:00:00');
-INSERT INTO `level` VALUES (3, 'admin', 'admin', '2020-02-14 00:00:41', '0000-00-00 00:00:00');
+INSERT INTO `level` VALUES (1, 'xadmin', 'xadmin', '2020-02-14 00:03:45', NULL, '0');
+INSERT INTO `level` VALUES (2, 'superadmin', 'superadmin', '2020-02-14 00:00:08', '0000-00-00 00:00:00', '0');
+INSERT INTO `level` VALUES (3, 'admin', 'admin', '2020-02-14 00:00:41', '0000-00-00 00:00:00', '0');
 
 -- ----------------------------
 -- Table structure for rule_level
@@ -98,7 +99,7 @@ CREATE TABLE `user`  (
   `email` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `token` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `is_active` enum('0','1') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
+  `is_active` enum('0','1') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '1',
   `created` datetime(0) NULL DEFAULT NULL,
   `modified` datetime(0) NULL DEFAULT NULL,
   `is_delete` enum('0','1') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
@@ -108,7 +109,8 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'superadmin', 'superadmin@mail.com', '123456', '123456', '0', '2020-02-14 00:01:19', NULL, '0');
+INSERT INTO `user` VALUES (1, 'superadmin', 'superadmin@mail.com', '123456', '123456', '1', '2020-02-14 00:01:19', NULL, '0');
+INSERT INTO `user` VALUES (2, 'Admin Web', 'admin@mail.com', '32132', '321321', '1', '2020-02-16 05:29:03', NULL, '0');
 
 -- ----------------------------
 -- Table structure for user_level
@@ -125,5 +127,6 @@ CREATE TABLE `user_level`  (
 -- Records of user_level
 -- ----------------------------
 INSERT INTO `user_level` VALUES (1, 1, 1);
+INSERT INTO `user_level` VALUES (2, 2, 3);
 
 SET FOREIGN_KEY_CHECKS = 1;

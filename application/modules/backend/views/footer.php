@@ -13,11 +13,8 @@
         <!-- End Footer -->
 
 
-        <!--Morris Chart-->
-        <script src="<?=base_url()?>_template/backend/plugins/morris/morris.min.js"></script>
-        <script src="<?=base_url()?>_template/backend/plugins/raphael/raphael-min.js"></script>
 
-        <script src="<?=base_url()?>_template/backend/pages/dashboard.js"></script>
+        <!-- <script src="<?=base_url()?>_template/backend/pages/dashboard.js"></script> -->
 
         <!-- App js -->
         <script src="<?=base_url()?>_template/backend/js/app.js"></script>

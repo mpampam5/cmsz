@@ -12,14 +12,14 @@
         <!-- App Icons -->
         <link rel="shortcut icon" href="<?=base_url()?>_template/backend/images/favicon.ico">
 
-        <!--Morris Chart CSS -->
-        <link rel="stylesheet" href="<?=base_url()?>_template/backend/plugins/morris/morris.css">
+        <!--Animate CSS -->
+        <link href="<?=base_url()?>_template/backend/plugins/animate/animate.min.css" rel="stylesheet" type="text/css">
 
         <!-- App css -->
         <link href="<?=base_url()?>_template/backend/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="<?=base_url()?>_template/backend/css/icons.css" rel="stylesheet" type="text/css" />
         <link href="<?=base_url()?>_template/backend/css/style.css" rel="stylesheet" type="text/css" />
-        <link href="<?=base_url()?>_template/backend/css/custom.css" rel="stylesheet" type="text/css" />
+        <link href="<?=base_url()?>_template/backend/custom.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<?=base_url()?>_template/backend/plugins/jquery-toast-plugin/jquery.toast.min.css">
 
 
@@ -168,8 +168,8 @@
                                 <li class="has-submenu">
                                     <a href="#"><i class="fa fa-user"></i>Manajemen Admin <i class="mdi mdi-chevron-down mdi-drop"></i></a>
                                     <ul class="submenu">
-                                        <li><a href="advanced-animation.html">List & Tambah Admin</a></li>
-                                        <li><a href="advanced-highlight.html">Level</a></li>
+                                        <li><a href="<?=site_url("backend/administrator")?>">Administrator</a></li>
+                                        <li><a href="<?=site_url("backend/level")?>">Level</a></li>
                                     </ul>
                                 </li>
 
