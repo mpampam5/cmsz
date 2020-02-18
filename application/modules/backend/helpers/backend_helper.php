@@ -12,3 +12,27 @@ function config_system($kode = null , $field = "value")
       return "System not available";;
   }
 }
+
+
+
+
+//core form
+//combobox
+function is_combo($table,$id_name,$id_field,$name_field,$value)
+{
+  $ci=& get_instance();
+  $qry = $ci->db->get_where("$table",["id_level !="=>"1"]);
+  $str = '<select class="form-control" name="'.$id_name.'" id="'.$id_name.'">';
+  if ($value=="") {
+    $str .= '<option value="">--pilih--</option>';
+  }
+  foreach ($qry->result() as $row) {
+    $str .='<option value="'.$row->$id_field.'" ';
+    $str .=  $value==$row->$id_field ? "selected>":">";
+    $str .= $row->$name_field;
+    $str .='</option>';
+  }
+  $str .= '<select>';
+
+  return $str;
+}

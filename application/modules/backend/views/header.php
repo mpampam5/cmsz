@@ -21,7 +21,7 @@
         <link href="<?=base_url()?>_template/backend/css/style.css" rel="stylesheet" type="text/css" />
         <link href="<?=base_url()?>_template/backend/custom.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<?=base_url()?>_template/backend/plugins/jquery-toast-plugin/jquery.toast.min.css">
-
+        <link href="<?=base_url()?>_template/backend/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
 
 
                 <!-- jQuery  -->
@@ -33,6 +33,7 @@
       <script src="<?=base_url()?>_template/backend/js/jquery.nicescroll.js"></script>
       <script src="<?=base_url()?>_template/backend/js/jquery.scrollTo.min.js"></script>
       <script src="<?=base_url()?>_template/backend/plugins/jquery-toast-plugin/jquery.toast.min.js"></script>
+      <script src="<?=base_url()?>_template/backend/plugins/sweet-alert2/sweetalert2.min.js"></script>
     </head>
 
 
