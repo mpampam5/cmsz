@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Feb 2020 pada 18.54
+-- Waktu pembuatan: 18 Feb 2020 pada 19.48
 -- Versi server: 10.1.34-MariaDB
 -- Versi PHP: 5.6.37
 
@@ -59,12 +59,13 @@ INSERT INTO `config_system` (`id`, `name`, `slug`, `value`, `status`) VALUES
 (3, 'email', 'email', 'mpampam5@mail.com', '0'),
 (4, 'domain', 'domain', 'www.tester.com', '0'),
 (5, 'alamat', 'alamat', 'jl. muhajirin raya', '0'),
+(50, 'status_smtp', 'status_smtp', NULL, '0'),
 (51, 'email_smtp', 'email_smtp', 'mpampam5@gmail.com', '0'),
 (52, 'host_smtp', 'host_smtp', 'ssl://niagahoster.com', '0'),
 (53, 'port_smtp', 'port_smtp', '465', '0'),
 (54, 'password_smtp', 'password_smtp', 'A1kA1DfFtZ0EimcxcDlhVj9VA1G8Idd7l5Iktqj2jxhDW6+v08X5BTguLYpiYu305oU2POZY1AGwL/1BEnOa5g==', '0'),
-(55, 'status_smtp', 'status_smtp', NULL, '0'),
-(99, 'maintenance', 'maintenance', NULL, '0');
+(100, 'key token', 'key_token', 'indonesia', '0'),
+(999, 'maintenance', 'maintenance', NULL, '0');
 
 -- --------------------------------------------------------
 
@@ -126,10 +127,12 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `nama`, `email`, `password`, `token`, `is_active`, `created`, `modified`, `is_delete`) VALUES
 (1, 'superadmin', 'superadmin@mail.com', '123456', '123456', '1', '2020-02-14 00:01:19', NULL, '0'),
-(2, 'Admin Web', 'admin@mail.com', '123456', 'mpampam20200218165340', '1', '2020-02-16 05:29:03', '2020-02-18 16:54:42', '0'),
+(2, 'Admin Web', 'admin@mail.com', '$2y$10$Qhp//ouyM9EEnNXgndBEIeJabxu.KOy8BcLlned2ssvXZWV2Xf0uO', 'mpampam20200218194251', '1', '2020-02-16 05:29:03', '2020-02-18 19:42:51', '0'),
 (3, 'sdsa', 'admisn@mail.com', '111111', 'mpampam20200216180835', '0', '2020-02-16 18:08:35', '2020-02-18 17:05:51', '1'),
 (4, '321321', 'asdww@mail.com', '123456', 'mpampam20200216181143', '1', '2020-02-16 18:11:43', '2020-02-18 17:09:14', '1'),
-(5, 'Contoh', 'asd@mail.com', 'aaaaaa', 'mpampam20200216182347', '1', '2020-02-16 18:23:47', NULL, '1');
+(5, 'Contoh', 'asd@mail.com', 'aaaaaa', 'mpampam20200216182347', '1', '2020-02-16 18:23:47', NULL, '1'),
+(6, 'text', 'test@mail.com', '$2y$10$DCKNAxN5OH8pZKgPRoK54eMOlBp04ETknwvohxVkYyYf91t9b79ue', 'mpampam20200218194129', '1', '2020-02-18 19:41:29', NULL, '1'),
+(7, 'test', 'test@mail.com', '$2y$10$WSug0duM366WsRSzLYoe..zrj9BF1La0wML6ygVtltSJXVjH8EahK', 'indonesia20200218194652', '1', '2020-02-18 19:46:52', NULL, '0');
 
 -- --------------------------------------------------------
 
@@ -152,7 +155,9 @@ INSERT INTO `user_level` (`id_user_level`, `id_user`, `id_level`) VALUES
 (2, 2, 2),
 (3, 3, 2),
 (4, 4, 2),
-(5, 5, 2);
+(5, 5, 2),
+(6, 6, 2),
+(7, 7, 2);
 
 --
 -- Indexes for dumped tables
@@ -214,13 +219,13 @@ ALTER TABLE `rule_level`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_level`
 --
 ALTER TABLE `user_level`
-  MODIFY `id_user_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

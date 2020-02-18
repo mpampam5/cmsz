@@ -95,12 +95,12 @@ function add_action()
         $json = array('success'=>false, 'alert'=>array());
         $this->_rules();
         if ($this->form_validation->run()) {
-
+          $token = config_system("key_token").date('YmdHis');
           $insert = array('nama' => $this->input->post('nama',true),
                           'email' => $this->input->post('email'),
                           'is_active' => $this->input->post('is_active'),
-                          'token' => "mpampam".date('YmdHis'),
-                          'password' => $this->input->post('konfirmasi_password'),
+                          'token' => $token,
+                          'password' => pass_encrypt($token,$this->input->post('konfirmasi_password')),
                           'is_delete' => "0",
                           'created' => date('Y-m-d H:i:s'),
                         );
@@ -155,8 +155,9 @@ function update_action($id)
         if ($this->form_validation->run()) {
 
           if ($_POST['konfirmasi_password']!="") {
-            $update['token'] = "mpampam".date('YmdHis');
-            $update['password'] = $this->input->post('konfirmasi_password');
+            $token = config_system("key_token").date('YmdHis');
+            $update['token'] = $token;
+            $update['password'] = pass_encrypt($token,$this->input->post('konfirmasi_password'));
           }
 
           $update['nama'] = $this->input->post('nama',true);
