@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2020 at 06:31 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 5.6.37
+-- Waktu pembuatan: 18 Feb 2020 pada 18.54
+-- Versi server: 10.1.34-MariaDB
+-- Versi PHP: 5.6.37
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ci_sessions`
+-- Struktur dari tabel `ci_sessions`
 --
 
 CREATE TABLE `ci_sessions` (
@@ -38,7 +38,7 @@ CREATE TABLE `ci_sessions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `config_system`
+-- Struktur dari tabel `config_system`
 --
 
 CREATE TABLE `config_system` (
@@ -50,7 +50,7 @@ CREATE TABLE `config_system` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `config_system`
+-- Dumping data untuk tabel `config_system`
 --
 
 INSERT INTO `config_system` (`id`, `name`, `slug`, `value`, `status`) VALUES
@@ -69,7 +69,7 @@ INSERT INTO `config_system` (`id`, `name`, `slug`, `value`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `level`
+-- Struktur dari tabel `level`
 --
 
 CREATE TABLE `level` (
@@ -82,7 +82,7 @@ CREATE TABLE `level` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `level`
+-- Dumping data untuk tabel `level`
 --
 
 INSERT INTO `level` (`id_level`, `level`, `slug`, `created`, `modified`, `is_delete`) VALUES
@@ -93,7 +93,7 @@ INSERT INTO `level` (`id_level`, `level`, `slug`, `created`, `modified`, `is_del
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rule_level`
+-- Struktur dari tabel `rule_level`
 --
 
 CREATE TABLE `rule_level` (
@@ -105,7 +105,7 @@ CREATE TABLE `rule_level` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -121,20 +121,20 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `nama`, `email`, `password`, `token`, `is_active`, `created`, `modified`, `is_delete`) VALUES
 (1, 'superadmin', 'superadmin@mail.com', '123456', '123456', '1', '2020-02-14 00:01:19', NULL, '0'),
-(2, 'Admin Web', 'admin@mail.com', '32132', '321321', '1', '2020-02-16 05:29:03', NULL, '0'),
-(3, 'sdsa', NULL, '111111', 'mpampam20200216180835', '1', '2020-02-16 18:08:35', NULL, '0'),
-(4, '321321', 'asdww@mail.com', '123456', 'mpampam20200216181143', '1', '2020-02-16 18:11:43', NULL, '0'),
-(5, 'Contoh', 'asd@mail.com', 'aaaaaa', 'mpampam20200216182347', '1', '2020-02-16 18:23:47', NULL, '0');
+(2, 'Admin Web', 'admin@mail.com', '123456', 'mpampam20200218165340', '1', '2020-02-16 05:29:03', '2020-02-18 16:54:42', '0'),
+(3, 'sdsa', 'admisn@mail.com', '111111', 'mpampam20200216180835', '0', '2020-02-16 18:08:35', '2020-02-18 17:05:51', '1'),
+(4, '321321', 'asdww@mail.com', '123456', 'mpampam20200216181143', '1', '2020-02-16 18:11:43', '2020-02-18 17:09:14', '1'),
+(5, 'Contoh', 'asd@mail.com', 'aaaaaa', 'mpampam20200216182347', '1', '2020-02-16 18:23:47', NULL, '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_level`
+-- Struktur dari tabel `user_level`
 --
 
 CREATE TABLE `user_level` (
@@ -144,14 +144,14 @@ CREATE TABLE `user_level` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `user_level`
+-- Dumping data untuk tabel `user_level`
 --
 
 INSERT INTO `user_level` (`id_user_level`, `id_user`, `id_level`) VALUES
 (1, 1, 1),
 (2, 2, 2),
 (3, 3, 2),
-(4, 4, 3),
+(4, 4, 2),
 (5, 5, 2);
 
 --
@@ -159,65 +159,65 @@ INSERT INTO `user_level` (`id_user_level`, `id_user`, `id_level`) VALUES
 --
 
 --
--- Indexes for table `ci_sessions`
+-- Indeks untuk tabel `ci_sessions`
 --
 ALTER TABLE `ci_sessions`
   ADD KEY `ci_sessions_timestamp` (`timestamp`) USING BTREE;
 
 --
--- Indexes for table `config_system`
+-- Indeks untuk tabel `config_system`
 --
 ALTER TABLE `config_system`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Indexes for table `level`
+-- Indeks untuk tabel `level`
 --
 ALTER TABLE `level`
   ADD PRIMARY KEY (`id_level`) USING BTREE;
 
 --
--- Indexes for table `rule_level`
+-- Indeks untuk tabel `rule_level`
 --
 ALTER TABLE `rule_level`
   ADD PRIMARY KEY (`id_rule_level`) USING BTREE;
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`) USING BTREE;
 
 --
--- Indexes for table `user_level`
+-- Indeks untuk tabel `user_level`
 --
 ALTER TABLE `user_level`
   ADD PRIMARY KEY (`id_user_level`) USING BTREE;
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `level`
+-- AUTO_INCREMENT untuk tabel `level`
 --
 ALTER TABLE `level`
   MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `rule_level`
+-- AUTO_INCREMENT untuk tabel `rule_level`
 --
 ALTER TABLE `rule_level`
   MODIFY `id_rule_level` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `user_level`
+-- AUTO_INCREMENT untuk tabel `user_level`
 --
 ALTER TABLE `user_level`
   MODIFY `id_user_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
