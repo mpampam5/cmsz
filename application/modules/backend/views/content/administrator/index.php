@@ -7,7 +7,7 @@
 <div class="wrapper">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12 col-xl-10 mx-auto animated fadeInRight delay-2s">
+        <div class="col-md-12 col-xl-10 mx-auto animated zoomIn delay-2s">
 
           <div class="card m-b-30">
             <div class="card-body">
@@ -97,7 +97,7 @@ $(document).on('click','#ya-hapus',function(e){
           .text('Processing...');
   $.ajax({
           url:$(this).data('url'),
-          type:'post',
+          type:'POST',
           cache:false,
           dataType:'json',
           success:function(json){

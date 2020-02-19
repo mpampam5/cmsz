@@ -34,6 +34,12 @@
       <script src="<?=base_url()?>_template/backend/js/jquery.scrollTo.min.js"></script>
       <script src="<?=base_url()?>_template/backend/plugins/jquery-toast-plugin/jquery.toast.min.js"></script>
       <script src="<?=base_url()?>_template/backend/plugins/sweet-alert2/sweetalert2.min.js"></script>
+
+      <style media="screen">
+      body.modal-open{
+        padding-right: 0 !important;
+      }
+      </style>
     </head>
 
 
@@ -114,12 +120,7 @@
                                         <span class="ml-1">Denish J. <i class="mdi mdi-chevron-down"></i> </span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                                        <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i> Profile</a>
-                                        <a class="dropdown-item" href="#"><i class="dripicons-wallet text-muted"></i> My Wallet</a>
-                                        <a class="dropdown-item" href="#"><span class="badge badge-success pull-right m-t-5">5</span><i class="dripicons-gear text-muted"></i> Settings</a>
-                                        <a class="dropdown-item" href="#"><i class="dripicons-lock text-muted"></i> Lock screen</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#"><i class="dripicons-exit text-muted"></i> Logout</a>
+                                        <a class="dropdown-item" href="<?=site_url("backend/login/logout")?>"><i class="dripicons-exit text-muted"></i> Logout</a>
                                     </div>
                                 </li>
                                 <li class="menu-item list-inline-item">

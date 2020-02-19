@@ -4,21 +4,35 @@
 
                 <div class="row">
                     <div class="col-md-6 col-xl-3">
-                        <div class="card text-center m-b-30">
+                        <div class="card m-b-30">
                             <div class="mb-2 card-body text-muted">
-                                <h3 class="text-info">15,852</h3>
-                                Monthly Statistics
+                                <h3 class="text-info mb-4">Hi, <?=profile("nama")?></h3>
+                                <table class="table table-bordered">
+                                  <tr>
+                                    <td colspan="2" class="text-center text-bold">USER LOG</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Email</td>
+                                    <td><?=profile("email")?></td>
+                                  </tr>
+                                  <tr>
+                                    <td>IP Address</td>
+                                    <td><?=$this->input->ip_address()?></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Waktu Server</td>
+                                    <td><?=date("d/m/Y H:i")?></td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2" class="text-center text-bold">
+                                      <a id="reset-pwd" href="<?=site_url("backend/core/reset_password")?>" class="btn btn-primary btn-sm"><i class="fa fa-key"></i> Reset Password</a>
+                                    </td>
+                                  </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card text-center m-b-30">
-                            <div class="mb-2 card-body text-muted">
-                                <h3 class="text-purple">9,514</h3>
-                                New Orders
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="col-md-6 col-xl-3">
                         <div class="card text-center m-b-30">
                             <div class="mb-2 card-body text-muted">
@@ -27,6 +41,16 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card text-center m-b-30">
+                            <div class="mb-2 card-body text-muted">
+                                <h3 class="text-primary">289</h3>
+                                New Users
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-md-6 col-xl-3">
                         <div class="card text-center m-b-30">
                             <div class="mb-2 card-body text-muted">
@@ -242,3 +266,17 @@
             </div> <!-- end container -->
         </div>
         <!-- end wrapper -->
+
+
+
+<script type="text/javascript">
+$(document).on("click","#reset-pwd",function(e){
+  e.preventDefault();
+  $('.modal-dialog').removeClass('modal-lg')
+                    .removeClass('modal-sm')
+                    .addClass('modal-md');
+  $("#modalTitle").text('Reset Password');
+  $('#modalContent').load($(this).attr("href"));
+  $("#modalGue").modal('show');
+});
+</script>

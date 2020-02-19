@@ -1,5 +1,13 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+function sess($str)
+{
+  $ci=& get_instance();
+  return $ci->session->userdata($str);
+}
+
+
 function config_system($kode = null , $field = "value")
 {
   //$file = "value" or $file = "status" 0,1
@@ -13,7 +21,30 @@ function config_system($kode = null , $field = "value")
   }
 }
 
-
+function profile($field)
+{
+  $ci=& get_instance();
+  $qry = $ci->db->select("user_level.id_user_level AS id_user_level,
+                          user_level.id_user AS id_user,
+                          user_level.id_level AS id_level,
+                          user.email AS email,
+                          user.password AS password,
+                          user.token AS token,
+                          user.is_active AS is_active,
+                          user.is_delete AS is_delete,
+                          user.nama AS nama,
+                          user.created AS created,
+                          user.modified AS modified,
+                          level.level AS level,
+                          level.slug AS slug_level")
+                  ->from("user_level")
+                  ->join("user","user.id_user = user_level.id_user")
+                  ->join("level","level.id_level = user_level.id_level")
+                  ->where("user_level.id_user",sess("id_user"))
+                  ->get()
+                  ->row();
+    return $qry->$field;
+}
 
 //pass hash
 function pass_encrypt($token,$str)

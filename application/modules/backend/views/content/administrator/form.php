@@ -1,11 +1,11 @@
 <div class="wrapper">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12 col-xl-7 mx-auto animated fadeInRight delay-2s">
+        <div class="col-md-12 col-xl-7 mx-auto animated zoomIn delay-2s">
 
           <div class="card m-b-30">
             <div class="card-body">
-              <form id="form" action="<?=$action?>" autocomplete="on">
+                <?php echo form_open($action, array( 'id' => 'form', 'autocomplete' => 'off' ));?>
                 <div class="form-group row">
                     <label for="example-search-input" class="col-sm-3 col-form-label">Nama</label>
                     <div class="col-sm-9">
@@ -119,6 +119,6 @@ $.ajax({
           });
         }
       }
-});
+    });
 });
 </script>
