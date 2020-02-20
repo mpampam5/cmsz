@@ -6,7 +6,7 @@ class Core extends Backend{
   public function __construct()
   {
     parent::__construct();
-    //Codeigniter : Write Less Do More
+    $this->load->model("Core_model","model");
   }
 
   function reset_password()
@@ -28,6 +28,7 @@ class Core extends Backend{
           if ($this->form_validation->run()) {
             $token = config_system("key_token").date('YmdHis');
             $update = array(
+                            'token' => $token,
                             'password' => pass_encrypt($token,$this->input->post('konfirmasi_password')),
                           );
 

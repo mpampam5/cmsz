@@ -18,11 +18,15 @@ class Backend extends CI_Controller{
   //CEK PASSWORD FORM VALIDATION
 function _cek_password($str)
 {
-  if (pass_decrypt(sess("token"),$str,sess("password"))==true) {
-    return true;
+  if ($str!="") {
+    if (pass_decrypt(profile("token"),$str,profile("password"))) {
+      return true;
+    }else {
+      $this->form_validation->set_message('_cek_password', '* Password Salah');
+      return false;
+    }
   }else {
-    $this->form_validation->set_message('_cek_password', '* Password Salah');
-    return false;
+    return true;
   }
 }
 

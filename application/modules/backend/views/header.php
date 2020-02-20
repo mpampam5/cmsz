@@ -157,6 +157,15 @@
                                 </li>
 
                                 <li class="has-submenu">
+                                    <a href="#"><i class="fa fa-file"></i>Post <i class="mdi mdi-chevron-down mdi-drop"></i></a>
+                                    <ul class="submenu">
+                                        <li><a href="<?=site_url("backend/post")?>">Post</a></li>
+                                        <li><a href="<?=site_url("backend/kategori")?>">Kategori</a></li>
+                                        <li><a href="<?=site_url("backend/tags")?>">Tags</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="has-submenu">
                                     <a href="#"><i class="fa fa-cogs"></i>Setting <i class="mdi mdi-chevron-down mdi-drop"></i></a>
                                     <ul class="submenu">
                                         <li><a href="<?=site_url("backend/setting/umum")?>">Umum</a></li>
@@ -174,7 +183,6 @@
                                         <li><a href="<?=site_url("backend/level")?>">Level</a></li>
                                     </ul>
                                 </li>
-
 
 
                             </ul>

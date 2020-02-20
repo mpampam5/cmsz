@@ -268,7 +268,6 @@
         <!-- end wrapper -->
 
 
-
 <script type="text/javascript">
 $(document).on("click","#reset-pwd",function(e){
   e.preventDefault();

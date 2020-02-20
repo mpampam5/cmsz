@@ -124,7 +124,6 @@ function add_action()
             }
         }
 
-        $json['token'] = $this->security->get_csrf_hash();
         echo json_encode($json);
     }
 }
