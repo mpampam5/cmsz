@@ -169,7 +169,7 @@
                                     <a href="#"><i class="fa fa-cogs"></i>Setting <i class="mdi mdi-chevron-down mdi-drop"></i></a>
                                     <ul class="submenu">
                                         <li><a href="<?=site_url("backend/setting/umum")?>">Umum</a></li>
-                                        <li><a href="advanced-highlight.html">Manajemen Menu</a></li>
+                                        <li><a href="<?=site_url("backend/main_menu")?>">Main Menu</a></li>
                                         <li><a href="advanced-rating.html">Slider</a></li>
                                         <li><a href="advanced-nestable.html">Widget</a></li>
                                     </ul>

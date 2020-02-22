@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+
+// author
+$config['author'] = 'www.mpampam.com';
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

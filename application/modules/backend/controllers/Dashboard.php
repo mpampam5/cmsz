@@ -15,4 +15,15 @@ class Dashboard extends Backend{
     $this->template->view("content/dashboard/index");
   }
 
+  function test()
+  {
+    $this->load->library('controllerlist');
+
+    print_r($this->controllerlist->getControllers());
+  }
+
+
+
+
+
 }

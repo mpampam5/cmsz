@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends Ci_Controller{
+class Login extends CI_Controller{
 
   public function __construct()
   {
@@ -40,8 +40,18 @@ class Login extends Ci_Controller{
               if (pass_decrypt($token,$password,$password_account)==true) {
                 $session = array('id_user' => $row->id_user, "id_level" => $row->id_level , "login_status" => true );
                 $this->session->set_userdata($session);
-                $json["url"] = site_url("backend/dashboard");
+                //insert log
+                $this->load->library(array("user_agent"));
+                $user_log = array('id_user' => $row->id_user,
+                                  'status' => "login",
+                                  'ip_address' => $this->input->ip_address(),
+                                  'user_agent' => $this->agent->platform()." - ".$this->agent->browser().' '.$this->agent->version(),
+                                  'date_time' => date("Y-m-d H:i:s")
+                                  );
+                $this->db->insert("ci_user_login",$user_log);
+
                 $json['valid'] = true;
+                $json["url"] = site_url("backend/dashboard");
               }else {
                 $json['alert'] = "Email atau Password tidak valid";
               }
@@ -65,6 +75,14 @@ class Login extends Ci_Controller{
 
 function logout()
 {
+  $this->load->library(array("user_agent"));
+  $user_log = array('id_user' => sess('id_user'),
+                    'status' => "logout",
+                    'ip_address' => $this->input->ip_address(),
+                    'user_agent' => $this->agent->platform()." - ".$this->agent->browser().' '.$this->agent->version(),
+                    'date_time' => date("Y-m-d H:i:s")
+                    );
+  $this->db->insert("ci_user_login",$user_log);
   $this->session->sess_destroy();
   redirect(site_url("backend/login"),"refresh");
 }
