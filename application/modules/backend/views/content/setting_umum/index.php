@@ -8,7 +8,7 @@
                     <h4 class="mt-0 header-title">Umum</h4>
 
 
-                    <form id="form" action="<?=site_url("backend/setting/umum_action")?>" autocomplete="off">
+                    <form id="form" action="<?=site_url("backend/setting_umum/action")?>" autocomplete="off">
                       <div class="form-group row">
                           <label for="example-text-input" class="col-sm-2 col-form-label">Title System</label>
                           <div class="col-sm-10">
@@ -82,7 +82,7 @@
                       </tr>
                       <tr>
                         <td colspan="2">
-                          <form id="form_email_smtp" action="<?=site_url("backend/setting/email_smtp_action")?>" autocomplete="off">
+                          <form id="form_email_smtp" action="<?=site_url("backend/setting_umum/email_smtp_action")?>" autocomplete="off">
                             <div class="form-group row">
                                 <label for="example-url-input" class="col-sm-2 col-form-label">Email_SMTP</label>
                                 <div class="col-sm-10">
@@ -174,7 +174,7 @@ $("input[type='checkbox']").change(function() {
   var dataName = $(this).attr('name');
 
   $.ajax({
-        url             : "<?=site_url("backend/setting/system_action")?>",
+        url             : "<?=site_url("backend/setting_umum/system_action")?>",
         type            : 'POST',
         data            : {name : dataName, value : dataVal},
         dataType        : 'JSON',

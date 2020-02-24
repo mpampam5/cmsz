@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Setting extends backend{
+class Setting_umum extends backend{
 
   public function __construct()
   {
@@ -9,10 +9,10 @@ class Setting extends backend{
     //Codeigniter : Write Less Do More
   }
 
-  function umum()
+  function index()
   {
     $this->template->set_title("Pengaturan umum");
-    $this->template->view("content/setting/umum");
+    $this->template->view("content/setting_umum/index");
   }
 
 

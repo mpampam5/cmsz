@@ -46,4 +46,10 @@ class Core extends Backend{
       }
   }
 
+
+  function icon()
+  {
+    $this->template->view("content/core/icon",array(),false);
+  }
+
 }

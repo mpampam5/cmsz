@@ -11,7 +11,7 @@ class Userize {
   {
     $CI =& get_instance();
     // $registered = array_intersect($this->_role(), $this->_controllerList());
-    $access_all = array('dashboard','main_menu');
+    $access_all = array('dashboard','main_menu','core');
     $registered = array_merge($access_all,$this->_role());
     $uri_segment = strtolower($CI->router->class);
     if (in_array($uri_segment,$registered)) {
@@ -22,7 +22,7 @@ class Userize {
   }
 
 
-  private function controllerList() {
+  private function _controllerList() {
 		$CI =& get_instance();
 		$CI->load->helper('directory');
 		$rootpath = 'application/modules/backend/controllers/';
@@ -64,6 +64,14 @@ class Userize {
       return array();
     }
 
+  }
+
+
+  function combo_controllerlist()
+  {
+    $array_remove = array('dashboard','login','core');
+    $list_controller = $this->_controllerList();
+    return array_diff($list_controller,$array_remove);
   }
 
 

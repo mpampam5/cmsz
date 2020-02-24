@@ -6,16 +6,20 @@
   .dd{
     max-width:100%!important;
   }
+
+  .float-right a{
+    display: inline-block!important;
+  }
 </style>
 <div class="wrapper">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12 col-xl-7 mx-auto animated fadeIn delay-2s">
+        <div class="col-md-12 col-xl-7 mx-auto animated zoomIn delay-2s">
 
           <div class="card m-b-30">
             <div class="card-body">
               <div class="m-b-10 text-center">
-                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-file"></i> Tambah</a>
+                <a href="<?=site_url('backend/main_menu/add')?>" class="btn btn-sm btn-success"><i class="fa fa-file"></i> add</a>
                 <a href="<?=site_url("backend/main_menu")?>" class="btn btn-sm btn-info"><i class="fa fa-refresh"></i> Reload</a>
               </div>
 
@@ -42,7 +46,7 @@
                         <li class="dd-item" data-id="<?=$menu->id_menu?>">
                             <div class="dd-handle">
                                 <?=strtoupper($menu->menu)?>
-                                <div class="float-right">
+                                <div class="float-right dd-content">
                                   <span class="text-success">[ # ]</span>
                                   <a href="#" class="badge badge-primary"><i class="fa fa-pencil"></i> UPDATE</a>
                                   <a href="#" class="badge badge-danger"><i class="fa fa-trash"></i> DELETE</a>
@@ -55,8 +59,8 @@
                                           <?=strtoupper($sub_menu->menu)?>
                                           <div class="float-right">
                                             <span class="text-success">[ <?=$sub_menu->controller?> ]</span>
-                                            <a href="#" class="badge badge-primary"><i class="fa fa-pencil"></i> UPDATE</a>
-                                            <a href="#" class="badge badge-danger"><i class="fa fa-trash"></i> DELETE</a>
+                                            <a href="<?=site_url("backend/main_menu/update/".enc_url($sub_menu->id_menu))?>" class="badge badge-primary"><i class="fa fa-pencil"></i> UPDATE</a>
+                                            <a href="<?=site_url("backend/main_menu/delete/".enc_url($sub_menu->id_menu))?>" class="badge badge-danger"><i class="fa fa-trash"></i> DELETE</a>
                                           </div>
                                       </div>
                                   </li>
@@ -69,8 +73,8 @@
                                   <?=strtoupper($menu->menu)?>
                                   <div class="float-right">
                                     <span class="text-success">[ <?=$menu->controller?> ]</span>
-                                    <a href="#" class="badge badge-primary"><i class="fa fa-pencil"></i> UPDATE</a>
-                                    <a href="#" class="badge badge-danger"><i class="fa fa-trash"></i> DELETE</a>
+                                    <a href="<?=site_url("backend/main_menu/update/".enc_url($menu->id_menu))?>" class="badge badge-primary"><i class="fa fa-pencil"></i> UPDATE</a>
+                                    <a href="<?=site_url("backend/main_menu/delete/".enc_url($menu->id_menu))?>" class="badge badge-danger"><i class="fa fa-trash"></i> DELETE</a>
                                   </div>
                               </div>
                           </li>
