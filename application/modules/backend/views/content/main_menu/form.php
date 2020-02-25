@@ -16,7 +16,7 @@
                 <div class="form-group row">
                     <label for="example-search-input" class="col-sm-3 col-form-label">Icon</label>
                     <div class="col-sm-7">
-                        <input class="form-control" type="text" name="icon" id="icon" value="<?=$menu?>">
+                        <input class="form-control" type="text" name="icon" id="icon" value="<?=$icon?>">
                     </div>
                     <div class="col-sm-2">
                       <a class="btn btn-info btn-md" href="<?=site_url("backend/core/icon")?>" id="icons">Icon</a>
@@ -29,8 +29,8 @@
                         <select class="form-control" name="controller" id="controller">
                           <option value="">*** kosong</option>
                           <optgroup label="-- Controller --">
-                          <?php $controller = $this->userize->combo_controllerlist(); ?>
-                          <?php foreach ($controller as $controllers): ?>
+                          <?php $get_controller = $this->userize->combo_controllerlist(); ?>
+                          <?php foreach ($get_controller as $controllers): ?>
                             <option value="<?=$controllers?>"><?=ucfirst($controllers)?></option>
                           <?php endforeach; ?>
                         </optgroup>
@@ -43,7 +43,7 @@
                     <div class="col-sm-9">
                         <select class="form-control" name="is_parent" id="is_parent">
                           <option value="0">Ya</option>
-                          <?php $get_menu = $this->db->get("main_menu"); ?>
+                          <?php $get_menu = $this->db->get_where("main_menu",["id_menu !="=>$id_menu, "is_parent"=> "0"]); ?>
                           <optgroup label="-- Main Menu --">
                           <?php foreach ($get_menu->result() as $menu): ?>
                             <option value="<?=$menu->id_menu?>"><?=ucfirst($menu->menu)?></option>

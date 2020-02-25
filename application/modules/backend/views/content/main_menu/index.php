@@ -46,10 +46,10 @@
                         <li class="dd-item" data-id="<?=$menu->id_menu?>">
                             <div class="dd-handle">
                                 <?=strtoupper($menu->menu)?>
-                                <div class="float-right dd-content">
+                                <div class="float-right dd-nodrag">
                                   <span class="text-success">[ # ]</span>
-                                  <a href="#" class="badge badge-primary"><i class="fa fa-pencil"></i> UPDATE</a>
-                                  <a href="#" class="badge badge-danger"><i class="fa fa-trash"></i> DELETE</a>
+                                  <a href="<?=site_url("backend/main_menu/update/".enc_url($menu->id_menu))?>" class="badge badge-primary"><i class="fa fa-pencil"></i> UPDATE</a>
+                                  <a id="delete" href="<?=site_url("backend/main_menu/delete/".enc_url($menu->id_menu))?>" class="badge badge-danger"><i class="fa fa-trash"></i> DELETE</a>
                                 </div>
                             </div>
                             <ol class="dd-list">
@@ -57,10 +57,10 @@
                                   <li class="dd-item" data-id="<?=$sub_menu->id_menu?>">
                                       <div class="dd-handle">
                                           <?=strtoupper($sub_menu->menu)?>
-                                          <div class="float-right">
+                                          <div class="float-right dd-nodrag">
                                             <span class="text-success">[ <?=$sub_menu->controller?> ]</span>
                                             <a href="<?=site_url("backend/main_menu/update/".enc_url($sub_menu->id_menu))?>" class="badge badge-primary"><i class="fa fa-pencil"></i> UPDATE</a>
-                                            <a href="<?=site_url("backend/main_menu/delete/".enc_url($sub_menu->id_menu))?>" class="badge badge-danger"><i class="fa fa-trash"></i> DELETE</a>
+                                            <a id="delete" href="<?=site_url("backend/main_menu/delete/".enc_url($sub_menu->id_menu))?>" class="badge badge-danger"><i class="fa fa-trash"></i> DELETE</a>
                                           </div>
                                       </div>
                                   </li>
@@ -71,10 +71,10 @@
                           <li class="dd-item" data-id="<?=$menu->id_menu?>">
                               <div class="dd-handle">
                                   <?=strtoupper($menu->menu)?>
-                                  <div class="float-right">
+                                  <div class="float-right dd-nodrag">
                                     <span class="text-success">[ <?=$menu->controller?> ]</span>
                                     <a href="<?=site_url("backend/main_menu/update/".enc_url($menu->id_menu))?>" class="badge badge-primary"><i class="fa fa-pencil"></i> UPDATE</a>
-                                    <a href="<?=site_url("backend/main_menu/delete/".enc_url($menu->id_menu))?>" class="badge badge-danger"><i class="fa fa-trash"></i> DELETE</a>
+                                    <a id="delete" href="<?=site_url("backend/main_menu/delete/".enc_url($menu->id_menu))?>" class="badge badge-danger"><i class="fa fa-trash"></i> DELETE</a>
                                   </div>
                               </div>
                           </li>
@@ -99,6 +99,43 @@
 <input type="hidden" id="main_menu_output">
 
 <script type="text/javascript">
+$(document).on("click","#delete",function(e){
+  e.preventDefault();
+  $('.modal-dialog').removeClass('modal-lg')
+                    .removeClass('modal-md')
+                    .addClass('modal-sm');
+  $("#modalTitle").text('Please Confirm');
+  $('#modalContent').html(`<p>Are you sure you want to delete?</p>
+														<button type='button' class='btn btn-default btn-sm' data-dismiss='modal'>Cancel</button>
+	                          <button type='button' class='btn btn-primary btn-sm' id='ya-hapus' data-id=`+$(this).attr('alt')+`  data-url=`+$(this).attr('href')+`>Yes, i'm sure</button>
+														`);
+  $("#modalGue").modal('show');
+});
+
+
+$(document).on('click','#ya-hapus',function(e){
+  $(this).prop('disabled',true)
+          .text('Processing...');
+  $.ajax({
+          url:$(this).data('url'),
+          type:'POST',
+          cache:false,
+          dataType:'json',
+          success:function(json){
+            $('#modalGue').modal('hide');
+            $.toast({
+              text: json.message,
+              showHideTransition: 'slide',
+              icon: 'success',
+              loaderBg: '#f96868',
+              position: 'bottom-right'
+            });
+            window.location.href = "<?=site_url("backend/main_menu")?>";
+          }
+        });
+});
+
+
 !function($) {
   "use strict";
 

@@ -156,7 +156,9 @@
                                     <a href="<?=site_url("backend/dashboard")?>"><i class="dripicons-device-desktop"></i>Dashboard</a>
                                 </li>
 
-                                <li class="has-submenu">
+                                <?=get_main_menu();?>
+
+                                <!-- <li class="has-submenu">
                                     <a href="#"><i class="fa fa-file"></i>Post <i class="mdi mdi-chevron-down mdi-drop"></i></a>
                                     <ul class="submenu">
                                         <li><a href="<?=site_url("backend/post")?>">Post</a></li>
@@ -182,7 +184,7 @@
                                         <li><a href="<?=site_url("backend/administrator")?>">Administrator</a></li>
                                         <li><a href="<?=site_url("backend/level")?>">Level</a></li>
                                     </ul>
-                                </li>
+                                </li> -->
 
 
                             </ul>
