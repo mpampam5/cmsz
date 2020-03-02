@@ -27,11 +27,11 @@
                     <label for="example-search-input" class="col-sm-3 col-form-label">Controller</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="controller" id="controller">
-                          <option value="">*** kosong</option>
+                          <option <?=$controller==""?"selected":""?> value="">*** kosong</option>
                           <optgroup label="-- Controller --">
                           <?php $get_controller = $this->userize->combo_controllerlist(); ?>
                           <?php foreach ($get_controller as $controllers): ?>
-                            <option value="<?=$controllers?>"><?=ucfirst($controllers)?></option>
+                            <option <?=$controller==$controllers?"selected":""?> value="<?=$controllers?>"><?=ucfirst($controllers)?></option>
                           <?php endforeach; ?>
                         </optgroup>
                         </select>
@@ -42,11 +42,11 @@
                     <label for="example-search-input" class="col-sm-3 col-form-label">Is Parent</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="is_parent" id="is_parent">
-                          <option value="0">Ya</option>
+                          <option <?=$is_parent==0?"selected":""?> value="0">Ya</option>
                           <?php $get_menu = $this->db->get_where("main_menu",["id_menu !="=>$id_menu, "is_parent"=> "0"]); ?>
                           <optgroup label="-- Main Menu --">
                           <?php foreach ($get_menu->result() as $menu): ?>
-                            <option value="<?=$menu->id_menu?>"><?=ucfirst($menu->menu)?></option>
+                            <option <?=$is_parent==$menu->id_menu?"selected":""?> value="<?=$menu->id_menu?>"><?=ucfirst($menu->menu)?></option>
                           <?php endforeach; ?>
                         </optgroup>
                         </select>

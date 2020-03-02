@@ -12,7 +12,7 @@
         </footer>
         <!-- End Footer -->
 
-        <div class="modal animated fadeInUp delay-2s" id="modalGue" tabindex="-1" role="dialog">
+        <div class="modal animated fadeInUp delay-30s" id="modalGue" tabindex="-1" role="dialog">
         	<div class="modal-dialog" role="document">
         		<div class="modal-content">
         			<div class="modal-header">

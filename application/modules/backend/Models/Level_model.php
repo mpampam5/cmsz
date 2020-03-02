@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Level_model extends CI_Model{
+class Level_model extends MY_Model{
 
   public function filter($limit, $start, $order_field, $order_ascdesc){
     $this->db->where("id_level !=","1");
@@ -10,7 +10,7 @@ class Level_model extends CI_Model{
     $this->db->limit($limit, $start);
     return $this->db->get('level')->result();
   }
-  
+
   public function count_all(){
     $this->db->where("id_level !=","1");
     $this->db->where("is_delete","0");

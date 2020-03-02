@@ -12,7 +12,7 @@
           <div class="card m-b-30">
             <div class="card-body">
               <div class="m-b-10 text-center">
-                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-file"></i> Tambah</a>
+                <a href="<?=site_url("backend/level/add")?>" class="btn btn-sm btn-success"><i class="fa fa-file"></i> Add</a>
               </div>
               <!-- <h4 class="mt-0 header-title"><?=ucfirst($title)?></h4> -->
               <table class="table table-bordered nowrap" id="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">

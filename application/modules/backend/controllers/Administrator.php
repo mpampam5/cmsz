@@ -84,7 +84,6 @@ function add()
                 'email' => set_value("email"),
                 'is_active' => set_value("is_active"),
                 'id_level' => set_value("id_level"),
-
                 );
   $this->template->view("content/administrator/form",$data);
 }

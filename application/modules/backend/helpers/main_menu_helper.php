@@ -16,16 +16,16 @@ function get_main_menu()
                                ->get();
       if ($get_sub_menu->num_rows() > 0) {
         $str.= '<li class="has-submenu">
-                  <a href="#"><i class="'.$menu->icon.'"></i>'.$menu->menu.' <i class="mdi mdi-chevron-down mdi-drop"></i></a>
+                  <a href="#"><i class="'.$menu->icon.'"></i>'.ucfirst($menu->menu).' <i class="mdi mdi-chevron-down mdi-drop"></i></a>
                   <ul class="submenu">';
         foreach ($get_sub_menu->result() as $sub_menu) {
-          $str .='<li><a href="'.site_url("backend/".$sub_menu->controller).'">'.$sub_menu->menu.'</a></li>';
+          $str .='<li><a href="'.site_url("backend/".$sub_menu->controller).'">'.ucfirst($sub_menu->menu).'</a></li>';
         }
         $str.='   </ul>
                 </li>';
       }else {
         $str.= '<li class="has-submenu">
-                    <a href="'.site_url("backend/".$menu->controller).'"><i class="'.$menu->icon.'"></i>'.$menu->menu.'</a>
+                    <a href="'.site_url("backend/".$menu->controller).'"><i class="'.$menu->icon.'"></i>'.ucfirst($menu->menu).'</a>
                 </li>';
       }
     }
