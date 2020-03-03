@@ -33,7 +33,19 @@ class Template
         $this->CI->load->view($view_name,$params);
       }
     }else {
-      echo "<h1>HTTP Error 403 - Forbidden</h1><hr>Access Denied You don't have permission to access<br>author : ".$this->CI->config->item("author");
+      // echo '<pre>
+      //         _  _    ___    ____
+      //        | || |  / _ \  |___  \
+      //        | || | | | | |  ___) |
+      //        |__  | | | | | |___ <
+      //           | | | |_| |  ___) |
+      //           |_|  \___/  |_____/  **Access Denied You don`t have permission to access
+      //         </pre>';
+      // echo "<a href='javascript:history.back()'>Back</a>";
+      // echo "<br></b>";
+      // echo "<br>author : ".$this->CI->config->item("author");
+      $this->CI->load->view("403");
+
     }
 
 

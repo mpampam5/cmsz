@@ -14,7 +14,7 @@
                 </tr>
                 <?php $get_menu = $this->db->query("SELECT * FROM main_menu WHERE is_parent=0  ORDER BY sort ASC" ) ?>
                 <?php foreach ($get_menu->result() as $menu): ?>
-                  <?php $get_sub_menu = $this->db->query("SELECT * FROM main_menu WHERE is_parent = $menu->id_menu") ?>
+                  <?php $get_sub_menu = $this->db->query("SELECT * FROM main_menu WHERE is_parent = $menu->id_menu ORDER BY sort ASC") ?>
                   <?php if ($get_sub_menu->num_rows() > 0): ?>
                     <tr>
                       <th>
@@ -22,10 +22,11 @@
                         <ul>
                         <?php foreach ($get_sub_menu->result() as $sub_menu): ?>
                             <li style="padding:10px;border-bottom:1px solid #e3e3e3">
-                              <?=$sub_menu->menu?>
+                              <?=strtoupper($sub_menu->menu)?>
+                              <i style="font-size:11px;margin-left:10px;" class="text-primary"> <?= $sub_menu->controller == "" ? "Url Null" : site_url("backend/".$sub_menu->controller)?></i>
                               <div class="float-right">
-                                <input type="checkbox" class="checkbox1 switch1" name="maintenance" switch="success" <?=config_system("maintenance","status")=="1" ? "checked":""?>/>
-                                <label for="switch1" data-on-label="Yes" data-off-label="No"></label>
+                                <input type="checkbox" id="switch<?=$sub_menu->id_menu?>"  class="checkbox1" name="<?=$sub_menu->controller?>" switch="success" <?=cek_role_access($sub_menu->controller) ? "checked" : ""?>/>
+                                <label for="switch<?=$sub_menu->id_menu?>" data-on-label="Yes" data-off-label="No"></label>
                               </div>
                             </li>
                         <?php endforeach; ?>
@@ -36,9 +37,10 @@
                       <tr>
                         <th style="padding-top:25px;">
                           <?=strtoupper($menu->menu)?>
-                          <div class="float-right">
-                            <input type="checkbox"  class="checkbox1 switch1" name="maintenance" switch="success" <?=config_system("maintenance","status")=="1" ? "checked":""?>/>
-                            <label for="switch1" data-on-label="Yes" data-off-label="No"></label>
+                          <i style="font-size:11px;margin-left:10px;" class="text-primary"> <?= $menu->controller == "" ? "Url Null" : site_url("backend/".$menu->controller)?></i>
+                          <div class="float-right" style="padding-right:13px;">
+                            <input type="checkbox" id="switch<?=$menu->id_menu?>"  class="checkbox1" name="<?=$menu->controller?>" switch="success" <?=cek_role_access($menu->controller) ? "checked" : ""?>/>
+                            <label for="switch<?=$menu->id_menu?>" data-on-label="Yes" data-off-label="No"></label>
                           </div>
                         </th>
                       </tr>
@@ -47,6 +49,9 @@
               </table>
 
 
+              <div class="float-right">
+                <a href="<?=site_url("backend/level")?>" class="btn btn-success btn-sm"> Finish</a>
+              </div>
             </div>
           </div>
         </div>
@@ -54,3 +59,43 @@
 
     </div>
 </div>
+
+
+<script type="text/javascript">
+$("input[type='checkbox']").change(function() {
+  if (this.checked) {
+    var dataVal = 1;
+  }else {
+    var dataVal = 0;
+  }
+
+  dataName = $(this).attr("name");
+
+  $.ajax({
+        url             : "<?=site_url("backend/level/set_role/".$this->uri->segment(4))?>",
+        type            : 'POST',
+        data            : {name : dataName, value : dataVal},
+        dataType        : 'JSON',
+        success:function(json){
+          if (json.success==true) {
+            $.toast({
+                text: json.alert,
+                showHideTransition: 'slide',
+                icon: "success",
+                loaderBg: '#f96868',
+                position: 'bottom-left',
+              });
+          }else {
+            $.toast({
+                text: json.alert,
+                showHideTransition: 'slide',
+                icon: "danger",
+                loaderBg: '#f96868',
+                position: 'bottom-left',
+              });
+          }
+        }
+  });
+
+});
+</script>

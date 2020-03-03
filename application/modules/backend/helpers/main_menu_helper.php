@@ -32,3 +32,15 @@ function get_main_menu()
 return $str;
 
 }
+
+function cek_role_access($str)
+{
+  $ci=& get_instance();
+  $id_level = $ci->uri->segment(4);
+  $qry = $ci->db->get_where("rule_level",["main_menu"=>$str, "id_level" => dec_url($id_level)]);
+  if ($qry->num_rows() > 0) {
+    return true;
+  }else {
+    return false;
+  }
+}
