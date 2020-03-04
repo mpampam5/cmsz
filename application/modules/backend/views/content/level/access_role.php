@@ -23,9 +23,9 @@
                         <?php foreach ($get_sub_menu->result() as $sub_menu): ?>
                             <li style="padding:10px;border-bottom:1px solid #e3e3e3">
                               <?=strtoupper($sub_menu->menu)?>
-                              <i style="font-size:11px;margin-left:10px;" class="text-primary"> <?= $sub_menu->controller == "" ? "Url Null" : site_url("backend/".$sub_menu->controller)?></i>
+                              <i style="font-size:11px;margin-left:10px;" class="text-primary"> <?= $sub_menu->id_menu == "" ? "Url Null" : site_url("backend/".$sub_menu->id_menu)?></i>
                               <div class="float-right">
-                                <input type="checkbox" id="switch<?=$sub_menu->id_menu?>"  class="checkbox1" name="<?=$sub_menu->controller?>" switch="success" <?=cek_role_access($sub_menu->controller) ? "checked" : ""?>/>
+                                <input type="checkbox" id="switch<?=$sub_menu->id_menu?>"  class="checkbox1" name="<?=$sub_menu->id_menu?>" switch="success" <?=cek_role_access($sub_menu->id_menu) ? "checked" : ""?>/>
                                 <label for="switch<?=$sub_menu->id_menu?>" data-on-label="Yes" data-off-label="No"></label>
                               </div>
                             </li>
@@ -37,9 +37,9 @@
                       <tr>
                         <th style="padding-top:25px;">
                           <?=strtoupper($menu->menu)?>
-                          <i style="font-size:11px;margin-left:10px;" class="text-primary"> <?= $menu->controller == "" ? "Url Null" : site_url("backend/".$menu->controller)?></i>
+                          <i style="font-size:11px;margin-left:10px;" class="text-primary"> <?= $menu->id_menu == "" ? "Url Null" : site_url("backend/".$menu->id_menu)?></i>
                           <div class="float-right" style="padding-right:13px;">
-                            <input type="checkbox" id="switch<?=$menu->id_menu?>"  class="checkbox1" name="<?=$menu->controller?>" switch="success" <?=cek_role_access($menu->controller) ? "checked" : ""?>/>
+                            <input type="checkbox" id="switch<?=$menu->id_menu?>"  class="checkbox1" name="<?=$menu->id_menu?>" switch="success" <?=cek_role_access($menu->id_menu) ? "checked" : ""?>/>
                             <label for="switch<?=$menu->id_menu?>" data-on-label="Yes" data-off-label="No"></label>
                           </div>
                         </th>

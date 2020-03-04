@@ -11,7 +11,7 @@ class Userize {
   {
     $CI =& get_instance();
     // $registered = array_intersect($this->_role(), $this->_controllerList());
-    $access_all = array('dashboard','main_menu','core');
+    $access_all = array('dashboard','core');
     $registered = array_merge($access_all,$this->_role());
     $uri_segment = strtolower($CI->router->class);
     if (in_array($uri_segment,$registered)) {
@@ -53,10 +53,14 @@ class Userize {
   private function _role(){
     $CI =& get_instance();
     $id_level = $CI->session->userdata("id_level");
-    $qry = $CI->db->get_where("rule_level",["id_level" => $id_level]);
+    $qry =  $CI->db->select("id_level, id_main_menu, controller")
+                   ->from("rule_level")
+                   ->join("main_menu","main_menu.id_menu=id_main_menu")
+                   ->where("id_level",$id_level)
+                   ->get();
     if ($qry->num_rows() > 0) {
       foreach ($qry->result() as $row) {
-        $result[] = $row->main_menu;
+        $result[] = $row->controller;
       }
 
       return $result;

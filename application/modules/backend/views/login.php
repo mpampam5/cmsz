@@ -124,7 +124,7 @@
                       text: json.alert,
                       showHideTransition: 'slide',
                       icon: 'error',
-                      loaderBg: '#00f781',
+                      loaderBg: '#f7c800',
                       position: 'top-center',
         							hideAfter: 3000
                     });

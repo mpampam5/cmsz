@@ -157,7 +157,7 @@ class Level extends Backend{
         $json = array('success'=>false, 'alert'=>array());
         $name = $this->input->post("name");
         $value = $this->input->post("value");
-        $data = ["id_level" => dec_url($id), "main_menu" => $name];
+        $data = ["id_level" => dec_url($id), "id_main_menu" => $name];
         if ($name != "") {
           if ($value == 1 || $value == 0) {
             if ($value == 1) {

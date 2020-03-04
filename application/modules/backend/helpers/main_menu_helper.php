@@ -37,7 +37,7 @@ function cek_role_access($str)
 {
   $ci=& get_instance();
   $id_level = $ci->uri->segment(4);
-  $qry = $ci->db->get_where("rule_level",["main_menu"=>$str, "id_level" => dec_url($id_level)]);
+  $qry = $ci->db->get_where("rule_level",["id_main_menu"=>$str, "id_level" => dec_url($id_level)]);
   if ($qry->num_rows() > 0) {
     return true;
   }else {

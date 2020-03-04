@@ -37,7 +37,7 @@ class Login extends CI_Controller{
               $row = $account->row();
               $token = $row->token;
               $password_account = $row->password;
-              if (pass_decrypt($token,$password,$password_account)==true) {
+              if (pass_decrypt($token,$password,$password_account)) {
                 $session = array('id_user' => $row->id_user, "id_level" => $row->id_level , "login_status" => true );
                 $this->session->set_userdata($session);
                 //insert log
