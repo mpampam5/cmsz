@@ -35,7 +35,7 @@ class Level extends Backend{
       $row[] = $rows->level;
       $row[] = '<a href="'.site_url("backend/level/role_access/".enc_url($rows->id_level)).'" class="bnt btn-sm btn-warning" id="akses"><i class="ion-ios7-paper-outline"></i> Access Role</a>
                 <a href="'.site_url("backend/level/update/".enc_url($rows->id_level)).'" class="bnt btn-sm btn-primary" id="update"><i class="fa fa-pencil"></i> update</a>
-                <a href="#" class="bnt btn-sm btn-danger" id="delete"><i class="fa fa-trash"></i> delete</a>
+                <a href="'.site_url("backend/level/delete/".enc_url($rows->id_level)).'" class="bnt btn-sm btn-danger" id="delete"><i class="fa fa-trash"></i> delete</a>
                 ';
 
       $data[] = $row;
@@ -201,6 +201,16 @@ class Level extends Backend{
       return FALSE;
     }else {
       return TRUE;
+    }
+  }
+
+
+  function delete($id)
+  {
+    if ($this->input->is_ajax_request()) {
+      $this->db->delete("level",["id_level" => dec_url($id)]);
+      $data = array("message" => "delete data success");
+      echo json_encode($data);
     }
   }
 

@@ -12,7 +12,7 @@
           <div class="card m-b-30">
             <div class="card-body">
               <div class="m-b-10 text-center">
-                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-file"></i> Add</a>
+                <a href="<?=site_url("backend/level/add")?>" class="btn btn-sm btn-success"><i class="fa fa-file"></i> Add</a>
               </div>
               <!-- <h4 class="mt-0 header-title"><?=ucfirst($title)?></h4> -->
               <table class="table table-bordered nowrap" id="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -72,7 +72,41 @@ var table;
       ],
     });
 
+    $(document).on("click","#delete",function(e){
+      e.preventDefault();
+      $('.modal-dialog').removeClass('modal-lg')
+                        .removeClass('modal-md')
+                        .addClass('modal-sm');
+      $("#modalTitle").text('Please Confirm');
+      $('#modalContent').html(`<p>Are you sure you want to delete?</p>
+    														<button type='button' class='btn btn-default btn-sm' data-dismiss='modal'>Cancel</button>
+    	                          <button type='button' class='btn btn-primary btn-sm' id='ya-hapus' data-id=`+$(this).attr('alt')+`  data-url=`+$(this).attr('href')+`>Yes, i'm sure</button>
+    														`);
+      $("#modalGue").modal('show');
+    });
 
+
+    $(document).on('click','#ya-hapus',function(e){
+      $(this).prop('disabled',true)
+              .text('Processing...');
+      $.ajax({
+              url:$(this).data('url'),
+              type:'POST',
+              cache:false,
+              dataType:'json',
+              success:function(json){
+                $('#modalGue').modal('hide');
+                $.toast({
+                  text: json.message,
+                  showHideTransition: 'slide',
+                  icon: 'success',
+                  loaderBg: '#f96868',
+                  position: 'bottom-right'
+                });
+                $('#table').DataTable().ajax.reload();
+              }
+            });
+    });
 
 });
 </script>
