@@ -15,7 +15,8 @@ class Core
         if ($this->_secureReturnedFileName($pathname) == '') continue;
         $result[] = $this->_secureReturnedFileName($pathname);
     }
-    $not_access = array('administrator','core','dashboard','level','login','main_menu','setting_umum');
+    // $not_access = array('administrator','core','dashboard','level','login','main_menu','setting_umum');
+    $not_access = array();
     $controller = array_diff($result,$not_access);
     return $controller;
   }

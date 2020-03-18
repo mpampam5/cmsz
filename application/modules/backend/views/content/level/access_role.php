@@ -8,8 +8,8 @@
               <table class="table table-bordered table-striped">
                 <tr>
                   <th style="padding-top:25px;padding-bottom:25px;">
-                    DASHBOARD
-                    <div class="float-right">null</div>
+                    Dashboard
+                    <div class="float-right">Null</div>
                   </th>
                 </tr>
                 <?php $get_menu = $this->db->query("SELECT * FROM main_menu WHERE is_parent=0  ORDER BY sort ASC" ) ?>
@@ -18,12 +18,12 @@
                   <?php if ($get_sub_menu->num_rows() > 0): ?>
                     <tr>
                       <th>
-                        <?=strtoupper($menu->menu)?>
+                        <?=ucfirst($menu->menu)?>
                         <ul>
                         <?php foreach ($get_sub_menu->result() as $sub_menu): ?>
                             <li style="padding:10px;border-bottom:1px solid #e3e3e3">
-                              <?=strtoupper($sub_menu->menu)?>
-                              <i style="font-size:11px;margin-left:10px;" class="text-primary"> <?= $sub_menu->id_menu == "" ? "Url Null" : site_url("backend/".$sub_menu->id_menu)?></i>
+                              <?=ucfirst($sub_menu->menu)?>
+                              <i style="font-size:11px;margin-left:10px;" class="text-primary"> <?= $sub_menu->controller == "" ? "Null" : site_url("backend/".$sub_menu->controller)?></i>
                               <div class="float-right">
                                 <input type="checkbox" id="switch<?=$sub_menu->id_menu?>"  class="checkbox1" name="<?=$sub_menu->id_menu?>" switch="success" <?=cek_role_access($sub_menu->id_menu) ? "checked" : ""?>/>
                                 <label for="switch<?=$sub_menu->id_menu?>" data-on-label="Yes" data-off-label="No"></label>
@@ -36,8 +36,8 @@
                     <?php else: ?>
                       <tr>
                         <th style="padding-top:25px;">
-                          <?=strtoupper($menu->menu)?>
-                          <i style="font-size:11px;margin-left:10px;" class="text-primary"> <?= $menu->id_menu == "" ? "Url Null" : site_url("backend/".$menu->id_menu)?></i>
+                          <?=ucfirst($menu->menu)?>
+                          <i style="font-size:11px;margin-left:10px;" class="text-primary"> <?= $menu->id_menu == "" ? "Url Null" : site_url("backend/".$menu->controller)?></i>
                           <div class="float-right" style="padding-right:13px;">
                             <input type="checkbox" id="switch<?=$menu->id_menu?>"  class="checkbox1" name="<?=$menu->id_menu?>" switch="success" <?=cek_role_access($menu->id_menu) ? "checked" : ""?>/>
                             <label for="switch<?=$menu->id_menu?>" data-on-label="Yes" data-off-label="No"></label>

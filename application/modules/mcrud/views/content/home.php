@@ -3,46 +3,59 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 col-xl-4 animated zoomIn delay-2s">
+          <div class="card m-b-10">
+            <div class="card-body">
+                <div class="form-group">
+                  <?php if (count($list_table) > 0): ?>
+                    <label for="">Table</label>
+                    <select class="form-control" name="list-table" id="list-table">
+                        <option value="">-- pilih table --</option>
+                        <?php foreach ($list_table as $tb): ?>
+                          <option value="<?=$tb?>"><?=$tb?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?php else: ?>
+                      <div class="alert alert-danger">Silahkan buat table dulu</div>
+                  <?php endif; ?>
+
+                </div>
+                <div class="float-right">
+                <a href="<?=base_url("mcrud")?>" class="btn btn-warning btn-md"><i class="fa fa-refresh"></i> Reload</a>
+                <button type="button" name="button" id="generate-table" class="btn btn-primary btn-md"><i class="fa fa-cogs"></i> Generate</button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="clearfix"></div>
+
           <div class="card m-b-30">
             <div class="card-body">
-              <div class="form-group">
-                <?php if (count($list_table) > 0): ?>
-                  <label for="">Pilih Table</label>
-                  <select class="form-control" name="table" id="table">
-                      <option value="">-- pilih table --</option>
-                      <?php foreach ($list_table as $tb): ?>
-                        <option value="<?=$tb?>"><?=$tb?></option>
-                      <?php endforeach; ?>
-                  </select>
-                  <?php else: ?>
-                    <div class="alert alert-danger">Silahkan buat table dulu</div>
-                <?php endif; ?>
+              <h6><span class="text-danger" style="font-size:12px">Directory : ../modules/backend/controllers/ </span></h6>
+              <h6><span class="text-danger" style="font-size:12px">Total Files : <?=count($list_controller)?> Files</span></h6>
+              <table class="table table-bordered">
+                <tr>
+                  <th>File</th>
+                  <th>Class</th>
+                  <th>Menu</th>
+                </tr>
 
-              </div>
-
-              <div class="clearfix"></div>
-              <hr>
-              <h6>Controllers <span class="text-danger">(../modules/backend/)</span></h6>
-              <ul>
                 <?php foreach ($list_controller as $controllers): ?>
-                  <li><?=ucfirst($controllers)?>.php</li>
+                <tr>
+                  <td><?=ucfirst($controllers)?>.php</td>
+                  <td><?=ucfirst($controllers)?></td>
+                  <td class="text-center"><?=cek_controller_is_menu($controllers)?></td>
+                </tr>
                 <?php endforeach; ?>
-              </ul>
+              </table>
             </div>
           </div>
         </div>
 
 
-
-
-
-
-
-
-
         <div class="col-md-12 col-xl-8 animated zoomIn delay-2s">
           <div class="card m-b-30">
-            <div class="card-body">
+            <div class="card-body" id="content">
               <div class="alert alert-info">
                 <p>CRUD Generator adalah istilah untuk sebuah tools yang membantu developer dalam membuat script untuk proses Create Read Update Dan Delete secara otomatis dengan bantuan tools tersebut, jika anda adalah pengguna framework Codeigniter maka CMS M-CRUDIGNITER adalah salah satu tools CRUD Generator yang wajib anda coba.</p>
                 <ul>
@@ -79,11 +92,31 @@
             </div>
           </div>
         </div>
-
-
-
-
       </div>
 
     </div>
 </div>
+
+
+
+<script type="text/javascript">
+  $(document).on("click","#generate-table",function(e){
+    e.preventDefault();
+    var value = $("#list-table option:selected").val();
+    $("#list-table").closest(".form-group").find(".text-danger").remove();
+      $.ajax({
+              url             : "<?=base_url()?>/mcrud/get",
+              type            : 'POST',
+              data            : "values="+value,
+              dataType        : 'JSON',
+              success:function(json){
+                if (json.success==true) {
+                  $("#content").hide().fadeIn(300).html(json.content);
+                }else {
+                  $("#list-table").after('<span style="font-size:12px" class="m-t-2 text-danger">*'+json.alert+'</span>');
+                }
+              }
+            });
+
+  });
+</script>

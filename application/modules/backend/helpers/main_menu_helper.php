@@ -52,6 +52,8 @@ function _cek_role_access_menu($field, $id)
                      ->get();
   if ($get->num_rows() > 0) {
       return true;
+  }else {
+     return false;
   }
 }
 
