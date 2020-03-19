@@ -31,8 +31,8 @@
 
           <div class="card m-b-30">
             <div class="card-body">
-              <h6><span class="text-danger" style="font-size:12px">Directory : ../modules/backend/controllers/ </span></h6>
-              <h6><span class="text-danger" style="font-size:12px">Total Files : <?=count($list_controller)?> Files</span></h6>
+              <h6><span class="text-danger font-12">Directory : ../modules/backend/controllers/ </span></h6>
+              <h6><span class="text-danger font-12">Total Files : <?=count($list_controller)?> Files</span></h6>
               <table class="table table-bordered">
                 <tr>
                   <th>File</th>

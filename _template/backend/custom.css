@@ -18,3 +18,16 @@ input[disabled] {
     background-color: #ababab;
     color: #f60b0b
   }
+
+
+  .filemanager-image{
+    width: 70px;
+    height: 70px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-image: url("./images/small/img-1.jpg");
+    background-color: #363636;
+    border-radius: 3px;
+    border:1px dotted #373737;
+  }

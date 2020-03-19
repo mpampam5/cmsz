@@ -139,7 +139,6 @@ function update_action($id)
                           'is_parent' => $this->input->post('is_parent',true),
                           'controller' => strtolower($this->input->post('controller',true)),
                           'icon' => $this->input->post('icon',true),
-                          'sort' => 0,
                           'modified' => date('Y-m-d H:i:s'),
                         );
 
