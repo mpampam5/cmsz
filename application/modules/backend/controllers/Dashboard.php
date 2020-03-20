@@ -15,6 +15,12 @@ class Dashboard extends Backend{
     $this->template->view("content/dashboard/index");
   }
 
+  function index2()
+  {
+    $this->template->set_title("dashboard");
+    $this->template->view("content/dashboard/index2");
+  }
+
   function test()
   {
     $this->load->library('controllerlist');

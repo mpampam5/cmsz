@@ -23,10 +23,9 @@ class Filemanager extends Backend{
       $data = array();
       foreach ($list as $rows) {
           $row = array();
-          $row[] = '<div class="filemanager-image"></div>';
-          $row[] = $rows->title.
-                   '<p class="text-muted font-14"><a href="">'.$rows->file.'</a>
-                    <br>'.date("d//m/Y H:i",strtotime($rows->created)).'</p>';
+          $row[] = '<a data-fancybox="gallery" data-title="'.$rows->file.'" href="'.base_url().'_template/files/'.$rows->file.'"><div style="background:url('.base_url().'_template/files/'.$rows->file.');background-repeat: no-repeat;background-position: center center;background-size: cover;" class="filemanager-image"></div></a>';
+          $row[] = '<p class="text-muted font-14"><a href="'.base_url().'_template/files/'.$rows->file.'" data-fancybox="gallery">'.$rows->file.'</a>
+                    <br><span class="font-12">'.date("d/m/Y H:i",strtotime($rows->created)).'</span></p>';
 
           $row[] = '<a href="'.site_url("backend/kategori/delete/".enc_url($rows->id)).'" class="bnt btn-sm btn-danger" id="delete"><i class="fa fa-trash"></i></a>';
 
@@ -59,20 +58,39 @@ class Filemanager extends Backend{
   function add_action()
   {
     if ($this->input->is_ajax_request()) {
-          $json = array('success'=>false, 'alert'=>array());
+          $json = array('success'=>0, 'alert'=>array());
           $this->load->helper('file');
           $this->form_validation->set_rules("title","*&nbsp;","trim|xss_clean|htmlspecialchars|required");
           $this->form_validation->set_rules("files","*&nbsp;","callback__file_check");
           $this->form_validation->set_error_delimiters('<span class="error text-danger" style="font-size:11px">','</span>');
           if ($this->form_validation->run()) {
-            // $insert = array('kategori' => strtolower($this->input->post('title',true)),
-            //                 'kategori_slug' => url_title($this->input->post('kategori',true),"-",true),
-            //                 'created' => date('Y-m-d H:i:s'),
-            //               );
+             $file_name = url_title($this->input->post('title',true),"-",true);
+             $ext = pathinfo($_FILES['files']['name'], PATHINFO_EXTENSION);
+             $full_file_name = strtolower($file_name).'.'.$ext;
+             $config['upload_path']   = './_template/files/';
+             $config['allowed_types']  = 'jpg|png';
+             $config['file_name']      = $full_file_name;
+             $config['overwrite']			 = false;
+             $config['max_size']       = 1024; // 1MB
 
-            // $this->model->get_insert("filemanager",$insert);
-            $json['alert'] = "upload successfully";
-            $json['success'] =  true;
+             $this->load->library('upload', $config);
+
+          		if ( ! $this->upload->do_upload('files')){
+                $json['success'] = 2;
+          			$json['alert'] = $this->upload->display_errors();
+          		}else{
+          			$result = $this->upload->data();
+                $insert = array('title' => strtolower($this->input->post('title',true)),
+                                'file'  => $result['file_name'] ,
+                                'created' => date('Y-m-d H:i:s'),
+                              );
+                $this->model->get_insert("filemanager",$insert);
+                $json['success'] =  1;
+                $json['alert'] = "upload successfully";
+          		}
+
+
+
           }else {
             foreach ($_POST as $key => $value)
               {
@@ -87,7 +105,7 @@ class Filemanager extends Backend{
 
   function _file_check($str){
         $allowed_mime_type_arr = array('image/jpeg','image/pjpeg','image/png','image/x-png');
-        $mime = get_mime_by_extension($_FILES['files']['tmp_name']);
+        $mime = get_mime_by_extension($_FILES['files']['name']);
         if(isset($_FILES['files']['name']) && $_FILES['files']['name']!=""){
             if(in_array($mime, $allowed_mime_type_arr)){
                 return true;

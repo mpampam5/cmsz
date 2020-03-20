@@ -22,7 +22,7 @@
         <link href="<?=base_url()?>_template/backend/custom.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<?=base_url()?>_template/backend/plugins/jquery-toast-plugin/jquery.toast.min.css">
         <link href="<?=base_url()?>_template/backend/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 
                 <!-- jQuery  -->
       <script src="<?=base_url()?>_template/backend/js/jquery.min.js"></script>
@@ -34,6 +34,7 @@
       <script src="<?=base_url()?>_template/backend/js/jquery.scrollTo.min.js"></script>
       <script src="<?=base_url()?>_template/backend/plugins/jquery-toast-plugin/jquery.toast.min.js"></script>
       <script src="<?=base_url()?>_template/backend/plugins/sweet-alert2/sweetalert2.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
       <style media="screen">
       body.modal-open{

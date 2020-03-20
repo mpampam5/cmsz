@@ -13,7 +13,7 @@ class Filemanager_model extends MY_Model{
       $this->db->from("filemanager");
       if($this->input->post('search'))
         {
-            $this->db->like('title', $this->input->post('search'));
+            $this->db->like('file', $this->input->post('search'));
         }
 
       if(isset($_POST['order'])) // here order processing

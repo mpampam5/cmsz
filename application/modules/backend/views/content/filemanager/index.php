@@ -34,7 +34,7 @@
               <table class="table table-bordered table-striped" id="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                   <tr>
-                    <th width="100">File</th>
+                    <th width="100">Image</th>
                     <th>Desc</th>
                     <th>#</th>
                   </tr>

@@ -23,7 +23,6 @@
         <link rel="stylesheet" href="<?=base_url()?>_template/backend/plugins/jquery-toast-plugin/jquery.toast.min.css">
         <link href="<?=base_url()?>_template/backend/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
 
-
                 <!-- jQuery  -->
       <script src="<?=base_url()?>_template/backend/js/jquery.min.js"></script>
       <script src="<?=base_url()?>_template/backend/js/bootstrap.bundle.min.js"></script>
@@ -34,7 +33,7 @@
       <script src="<?=base_url()?>_template/backend/js/jquery.scrollTo.min.js"></script>
       <script src="<?=base_url()?>_template/backend/plugins/jquery-toast-plugin/jquery.toast.min.js"></script>
       <script src="<?=base_url()?>_template/backend/plugins/sweet-alert2/sweetalert2.min.js"></script>
-
+    
       <style media="screen">
       body.modal-open{
         padding-right: 0 !important;

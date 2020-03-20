@@ -38,7 +38,7 @@ $.ajax({
       dataType        : 'JSON',
       processData     :false,
       success:function(json){
-        if (json.success==true) {
+        if (json.success==1) {
             $.toast({
               text: json.alert,
               showHideTransition: 'slide',
@@ -47,9 +47,21 @@ $.ajax({
               position: 'bottom-right',
 							hideAfter: 3000,
               afterHidden: function () {
-                  location.href="<?=site_url('backend/'.$this->uri->segment(2))?>";
+                  $("#modalGue").modal("hide");
+                  $("#table").DataTable().ajax.reload();
               }
             });
+        }else if (json.success==2) {
+          $.toast({
+            text: json.alert,
+            showHideTransition: 'slide',
+            icon: 'error',
+            loaderBg: '#f96868',
+            position: 'bottom-right',
+            hideAfter: 5000
+          });
+          $("#submit").prop('disabled',false)
+                      .html('Upload');
         }else {
           $("#submit").prop('disabled',false)
                       .html('Upload');
